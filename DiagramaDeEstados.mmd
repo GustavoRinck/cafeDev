@@ -1,0 +1,14 @@
+stateDiagram
+    [*] --> pedidoRecebido
+    pedidoRecebido --> validacao
+    validacao --> pagamento : valido 
+    validacao --> [*]: invalido
+    pagamento --> pedidoAprovado
+    pedidoAprovado --> pedidoPreparacao 
+    pedidoPreparacao --> pedidoPronto
+    pedidoPronto --> entrega
+    pedidoPronto --> [*]: canceladao
+    pedidoPreparacao --> [*]: canceladao
+    entrega --> finalizado
+    finalizado -->[*] :termino
+    entrega --> [*] :nao retirado
